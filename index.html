@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Weathercast</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/test.css" rel="stylesheet">
+    <link href="css/tipsy.css" rel="stylesheet">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+ </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar">
+          <!-- <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> -->
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Weathercast</a>
+          <div>
+          <!-- <div class="nav-collapse collapse"> -->
+            <ul class="nav">
+                <li><a id="today" href="#"></a></li>
+                <!-- li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li class="nav-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+                </li> -->
+            </ul>
+<!--             <form class="navbar-form pull-left">
+              <div class="input-append" style="margin-top: 5px;">
+                <button id="line" class="btn btn-success" type="button">Line</button>
+                <button id="bar" class="btn" type="button">Bar</button>
+                <button id="heat" class="btn" type="button">Heat</button>
+              </div>
+            </form> -->
+            <form class="navbar-form pull-right">
+                  <input id="location" class="span2" type="text" placeholder="Location (City, State)">
+                  <button type="submit" class="btn" style="margin-top: 4px;">Search</button>
+            </form>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+          <div class="row">
+            <h1 class="span6" id="city"></h1>
+            <h2 class="span3" id="current" style="float:right;"></h2>
+          </div>
+          <img id="forecast_icon" height="44" width="44" style="float:left; margin-top: -60px;"/>
+          <h2 class="span3" id="condition" style="margin-top: -60px; margin-left: 50px;"></h2>
+      </div>
+
+      <!-- <h2>3 Day Forecast</h2> -->
+        <div class="row" style="margin-top: -30px;">
+          <div class="span2">
+            <h2 class="tc">5 Days</h2>
+            <table id="table" class="table table-hover">
+                <tbody>
+                    <tr>
+                      <td><div class="tc">Temperature</div></td>
+                    </tr>
+                    <tr>
+                      <td><div class="tc">Humidity</div></td>
+                    </tr>
+                    <tr>
+                      <td><div class="tc">Chance of Rain</div></td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+          <div class="span2">
+            <h2 id="day1" class="tc">Sep 15</h2>
+            <table id="day1table" class="table table-hover">
+                <!-- <caption>...</caption> -->
+                <!-- <thead>
+                    <tr>
+                        <th>Condition</th>
+                        <th>Value</th>
+                    </tr>
+                </thead> -->
+                <tbody>
+                    <tr>
+                        <td class=""></td>
+                    </tr>
+                    <tr>
+                        <td class=""></td>
+                    </tr>
+                    <tr>
+                        <td class=""></td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+          <div class="span2">
+            <h2 id="day2" class="tc">Sep 6</h2>
+            <table id="day2table"  class="table table-hover">
+                <tbody>
+                    <tr>
+                        <td class=""></td>
+                    </tr>
+                    <tr>
+                        <td class=""></td>
+                    </tr>
+                    <tr>
+                        <td class=""></td>
+                    </tr>
+                </tbody>
+            </table>
+         </div>
+          <div class="span2">
+            <h2 id="day3" class="tc">Sep 7</h2>
+            <table id="day3table"  class="table table-hover">
+                <tbody>
+                    <tr>
+                        <td class=""></td>
+                    </tr>
+                    <tr>
+                        <td class=""></td>
+                    </tr>
+                    <tr>
+                        <td class=""></td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+          <div class="span2">
+            <h2 id="day4" class="tc">Sep 8</h2>
+            <table id="day4table"  class="table table-hover">
+                <tbody>
+                    <tr>
+                        <td class=""></td>
+                    </tr>
+                    <tr>
+                        <td class=""></td>
+                    </tr>
+                    <tr>
+                        <td class=""></td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+          <div class="span2">
+            <h2 id="day5" class="tc">Sep 9</h2>
+            <table id="day5table"  class="table table-hover">
+                <!-- <caption>...</caption> -->
+                <!-- <thead>
+                    <tr>
+                        <th>Condition</th>
+                        <th>Value</th>
+                    </tr>
+                </thead> -->
+                <tbody>
+                    <tr>
+                        <td class=""></td>
+                    </tr>
+                    <tr>
+                        <td class=""></td>
+                    </tr>
+                    <tr>
+                        <td class=""></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- <p>Temp: 68F</p>
+            <p>Humidity: 87%</p>
+            <p>Chance of Rain: 20%</p> -->
+          </div>
+        </div>
+
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="span4 tc">
+          <div id="view_temp" class="btn" style="margin-left: 5px;"><h4 id="text_temp">Temp. (F) &raquo;</h4></div>
+        </div>
+        <div class="span4 tc">
+          <div id="view_humidity" class="btn" style="margin-left: 5px;"><h4 id="text_humidity">Humidity (%) &raquo;</h4></div>
+        </div>
+        <div class="span4 tc">
+         <div id="view_tides" class="btn" style="margin-left: 5px;"><h4 id="text_tides">Tides (ft) &raquo;</h4></div>
+        </div>
+      </div>
+
+      <div id="graph"></div>
+
+      <footer>
+        <div class="row">
+          <div class="span2">
+            <p>Henry Zhu - for CS 4460 (Georgia Tech)</p>
+          </div>
+          <div class="span4 offset6">
+            <p id="lastUpdated">Last Updated: </p>
+          </div>
+        </div>
+      </footer>
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="bootstrap/js/jquery.js"></script>
+    <script src="js/jquery-ui-1.8.23.custom.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/d3.v2.js"></script>
+    <!-- // <script src="js/jquery.tipsy.js"></script> -->
+    <script src="js/jquery.tipsy_d3.js"></script>
+    <script src="js/test.js"></script>
+
+  </body>
+</html>

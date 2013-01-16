@@ -1,0 +1,77 @@
+.tl { text-align: left }
+.tr { text-align: right }
+.tc { text-align: center }
+
+html,body {
+  height: 720px;
+}
+
+body {
+	background-color: lightgray;
+}
+
+.icon {
+    background-position: 0;
+    height: 16px;
+    width: 16px;
+    margin: 2px 0px 0 3px;
+}
+
+.white {
+	color: white;	
+}
+ 
+.ui-progress {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  height: 33px;
+  -moz-border-radius: 35px;
+  -webkit-border-radius: 35px;
+  border-radius: 35px;
+  -webkit-background-size: 44px 44px;
+  width: 50px;
+  background-color: #74d04c;
+}
+
+path {
+	stroke: steelblue;
+	stroke-width: 1;
+	fill: none;
+}
+
+#graph .rect {
+  fill: steelblue;
+  stroke: white;
+}
+
+.axis {
+  shape-rendering: crispEdges;
+}
+
+.x.axis line {
+  stroke: lightgrey;
+}
+
+.x.axis .minor {
+  stroke-opacity: .5;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.y.axis line, .y.axis path {
+  fill: none;
+  stroke: #000;
+}
+
+.selected {
+	color: blue;
+}
+
+.data-point {
+  stroke: steelblue;
+  stroke-width: 2;
+  fill: #FFF;
+}
