@@ -1,5 +1,6 @@
 (function() {
-	var API_KEY = "API KEY HERE";
+	//hi api key
+	var API_KEY = "ab3ee2e7092c2c87";
 
 	var baseUrl = "http://api.wunderground.com/api/"
 	var query = "/conditions/almanac/forecast10day/tide/hourly10day/q/";
