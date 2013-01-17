@@ -2,6 +2,8 @@
 =========
 A weather dashboard for a specified city.
 
+![scrnshot](http://i.imgur.com/Ojtff.png)
+
 Features
 -----------
 
@@ -47,6 +49,7 @@ License
 --------------
 [MIT license]
 
+  [Weathercast]: http://eltacodeldiablo.github.com/weathercast/
   [MIT license]: https://github.com/eltacodeldiablo/weathercast/blob/master/LICENSE
   [Weather Underground API]: http://www.wunderground.com/weather/api/
   [Tipsy]: https://github.com/jaz303/tipsy
