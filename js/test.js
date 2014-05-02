@@ -1,5 +1,5 @@
 (function() {
-	var API_KEY = "API KEY HERE";
+	var API_KEY = "19c20b1e664e79a6";
 
 	var baseUrl = "http://api.wunderground.com/api/"
 	var query = "/conditions/almanac/forecast10day/tide/hourly10day/q/";
@@ -22,6 +22,62 @@
 
 	var recordHigh;
 	var recordLow;
+
+	var conditionMap = {
+		'Drizzle'                      : 'Drizzle',
+		'Rain'                         : 'Rain',
+		'Snow'                         : 'Snow',
+		'Snow Grains'                  : 'Snow',
+		'Ice Crystals'                 : 'Snow',
+		'Ice Pellets'                  : 'Snow',
+		'Hail'                         : 'Rain',
+		'Mist'                         : 'Rain',
+		'Fog'                          : 'Rain',
+		'Fog Patches'                  : 'Rain',
+		'Smoke'                        : 'Rain',
+		'Volcanic Ash'                 : 'Rain',
+		'Widespread Dust'              : 'Rain',
+		'Sand'                         : 'Rain',
+		'Haze'                         : 'Rain',
+		'Spray'                        : 'Rain',
+		'Dust Whirls'                  : 'Rain',
+		'Sandstorm'                    : 'Rain',
+		'Low Drifting Snow'            : 'Snow',
+		'Low Drifting Widespread Dust' : 'Rain',
+		'Low Drifting Sand'            : 'Rain',
+		'Blowing Snow'                 : 'Snow',
+		'Blowing Widespread Dust'      : 'Rain',
+		'Blowing Sand'                 : 'Rain',
+		'Rain Mist'                    : 'Rain',
+		'Rain Showers'                 : 'Rain',
+		'Snow Showers'                 : 'Snow',
+		'Snow Blowing Snow Mist'       : 'Snow',
+		'Ice Pellet Showers'           : 'Snow',
+		'Hail Showers'                 : 'Rain',
+		'Small Hail Showers'           : 'Rain',
+		'Thunderstorm'                 : 'Rain',
+		'Thunderstorms and Rain'       : 'Rain',
+		'Thunderstorms and Snow'       : 'Snow',
+		'Thunderstorms and Ice Pellets': 'Snow',
+		'Thunderstorms with Hail'      : 'Rain',
+		'Thunderstorms with Small Hail': 'Rain',
+		'Freezing Drizzle'             : 'Drizzle',
+		'Freezing Rain'                : 'Rain',
+		'Freezing Fog'                 : 'Rain',
+		'Patches of Fog'               : 'Rain',
+		'Shallow Fog'                  : 'Rain',
+		'Partial Fog'                  : 'Rain',
+		'Overcast'                     : 'Overcast',
+		'Clear'                        : 'Clear',
+		'Partly Cloudy'                : 'Partly Cloudy',
+		'Mostly Cloudy'                : 'Mostly Cloudy',
+		'Scattered Clouds'             : 'Partly Cloudy',
+		'Small Hail'                   : 'Rain',
+		'Squalls'                      : 'Rain',
+		'Funnel Cloud'                 : 'Rain',
+		'Unknown Precipitation'        : 'Rain',
+		'Unknown'                      : 'Clear'
+	}
 
 	//fix geolocation in the future
 
@@ -105,21 +161,24 @@
 				    	location = state + "/" + location;
 				    }
 				    else {
-				    	state = stateData['location']['state'];
-				    	city = stateData['location']['city'];
+				    	if (stateData['location']) {
+				    		state = stateData['location']['state'];
+				    		city = stateData['location']['city'];
+
+						    $('#city').text(city + ", " + state);
+
+						    console.log(baseUrl + API_KEY + query + location + ".json");
+
+						    $.ajax({
+								url: baseUrl + API_KEY + query + location + ".json",
+								dataType: "jsonp",
+								success: function(weatherData) {
+									success(weatherData);
+								}
+							});
+				    	}
 				    }
 
-				    $('#city').text(city + ", " + state);
-
-				    console.log(baseUrl + API_KEY + query + location + ".json");
-
-				    $.ajax({
-						url: baseUrl + API_KEY + query + location + ".json",
-						dataType: "jsonp",
-						success: function(weatherData) {
-							success(weatherData);
-						}
-					});
 				}
 			});
 		}
@@ -152,16 +211,16 @@
 	    $('#city').text(city_state);
 	    // console.log(weather.toLowerCase());
 	    if (true) {
-
-	    	if ((new Date()).getHours() > 19) {
-	    		$('.hero-unit').css('background','url(' + weather.toLowerCase().replace('heavy','').replace('light','').replace(' ','') + '_night.jpg) no-repeat');
+	    	var mappedCondition = conditionMap[weather] || weather;
+	    	if ((new Date()).getHours() > 19 && mappedCondition == 'Partly Cloudy') {
+	    		$('.hero-unit').css('background','url(' + mappedCondition.toLowerCase().replace('heavy','').replace('light','').replace(' ','') + '_night.jpg) no-repeat');
 				$('.hero-unit').css('color','white');
 	    	}
 	    	else {
-	    		$('.hero-unit').css('background','url(' + weather.toLowerCase().replace('heavy','').replace('light','').replace(' ','') + '.jpg) no-repeat');
+	    		$('.hero-unit').css('background','url(' + mappedCondition.toLowerCase().replace('heavy','').replace('light','').replace(' ','') + '.jpg) no-repeat');
 	    		$('.hero-unit').css('color','black');
 	    	}
-	    	if (weather == "Overcast")
+	    	if (mappedCondition == "Overcast")
 	    		$('.hero-unit').css('color','darkorange');
 
 	    	$('.hero-unit').css('background-size','cover');
