@@ -49,8 +49,8 @@ License
 --------------
 [MIT license]
 
-  [Weathercast]: http://eltacodeldiablo.github.com/weathercast/
-  [MIT license]: https://github.com/eltacodeldiablo/weathercast/blob/master/LICENSE
+  [Weathercast]: http://hzoo.github.com/weathercast/
+  [MIT license]: https://github.com/hzoo/weathercast/blob/master/LICENSE
   [Weather Underground API]: http://www.wunderground.com/weather/api/
   [Tipsy]: https://github.com/jaz303/tipsy
   [Twitter Bootstrap]: http://twitter.github.com/bootstrap/
